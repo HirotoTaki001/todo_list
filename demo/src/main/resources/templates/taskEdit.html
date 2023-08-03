@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>タスクの編集</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<nav th:replace="nav"></nav>
+	<main>
+		<h3>タスクの編集</h3>
+		<form th:action="'/tasks/'+${task.id}+'/edit'" method="post">
+			<table class="list">
+				<tr>
+					<th>カテゴリー</th>
+					<td>
+						<select name="categoryId">
+							<option th:each="c:${categories}" th:value="${c.id}" th:text="${c.name}"
+								th:selected="${c.id == task.categoryId}"></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>タスク内容</th>
+					<td>
+						<input type="text" size="40" name="name" th:value="${task.name}">
+					</td>
+				</tr>
+				<tr>
+					<th>期日</th>
+					<td>
+						<p class="vanity">
+							<label>
+								<input type="checkbox" name="variety" id="prop" value="1"
+									th:checked="${task.variety == 1}" onchange="changesel_muki();">無期限タスク
+							</label>
+							<label>
+								<input type="checkbox" name="variety" id="loop" value="2"
+									th:checked="${task.variety == 2}" onchange="changesel_lop()">周期タスク
+								<select name="hz" class="hz">
+									<option value="1" th:selected="${task.hz == 1}">毎日</option>
+									<option value="7" th:selected="${task.hz == 7}">毎週</option>
+									<option value="30" th:selected="${task.hz == 30}">毎月</option>
+									<option value="365" th:selected="${task.hz == 365}">毎年</option>
+								</select>
+								<input type="date" name="deadlines" id="hzdays" th:value="${task.line}">
+							</label>
+							<label>
+								<input type="checkbox" name="variety" id="lims" value="3"
+									th:checked="${task.variety == 3}" onchange="setDate(); changesel_lim()">期限タスク
+								<input type="date" name="deadline" id="setday"
+									th:value="${task.variety == 3} ? ${task.line}">
+							</label>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th>優先度</th>
+					<td>
+						<select name="priority">
+							<option th:each="i:${#numbers.sequence(1, 3)}" th:value="${i}"
+								th:selected="${i == task.priority}"
+								th:text="${i == 1} ? '最高' : (${i == 2} ? '中' : '最低')">
+							</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>詳細</th>
+					<td>
+						<textarea name="detail" rows="3" cols="50"
+							th:text="${task.detail == '詳細無し'} ? '' : ${task.detail}"></textarea>
+					</td>
+				</tr>
+			</table>
+			<button class="plain">更新</button>
+		</form>
+	</main>
+	<hr>
+	<footer th:replace="footer"></footer>
+	<script th:src="@{../../js/limit.js}"></script>
+</body>
+
+</html>

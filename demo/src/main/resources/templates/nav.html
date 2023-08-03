@@ -1,0 +1,29 @@
+<nav>
+	<ul class="menu">
+		<li><a href="/tasks">未達成タスク一覧</a>
+			<ul>
+				<li th:each="c:${categories}">
+					<a th:href="'/tasks?categoryId='+${c.id}">
+						<span th:text="${c.name}" style=" padding: auto 5px;"></span>
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="/categories">カテゴリ一覧</a>
+		</li>
+		<li>
+			<a href="/tasks/checked">達成済みタスク一覧</a>
+		</li>
+		<li>
+			<a href="/tasks/over" th:style="${over > 0} ? 'color: yellow;'" th:text="${over > 0} ? '※期限超過タスク一覧※' : '期限超過タスク一覧'"></a>
+		</li>
+		<li><a>アカウント</a>
+			<ul>
+				<li><a href="/profile">アカウント情報</a></li>
+				<li><a href="/request">お問い合わせ</a></li>
+				<li><a href="/logout">ログアウト</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>

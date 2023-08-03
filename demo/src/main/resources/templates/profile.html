@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>アカウント情報</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<nav th:replace="nav"></nav>
+	<hr>
+	<main>
+		<h2 class="task">アカウント情報</h3>
+			<table class="list">
+				<tr>
+					<th>名前</th>
+					<td th:text="${customer.name}"></td>
+				</tr>
+				<tr>
+					<th>ユーザ名</th>
+					<td th:text="${customer.userName}"></td>
+				</tr>
+				<tr>
+					<th>メールアドレス</th>
+					<td th:text="${customer.email}"></td>
+				</tr>
+				<tr>
+					<th>パスワード</th>
+					<td>
+						<label for="see"><span class="pass_btn">パスワード表示</span></label>
+						<input type="checkbox" id="see">
+						<p th:text="${customer.password}" class="pass"></p>
+					</td>
+				</tr>
+			</table>
+			<input type="checkbox" id="addmenu" th:checked="${flag == 1}">
+			<label for="addmenu" class="addition">
+				<h2 class="add_btn">情報変更<span class="drop_btn"></span></h2>
+			</label>
+			<div class="drop">
+				<form th:action="'/profile/'+${customer.id}" method="post">
+					<div class="addForm">
+						<span class="tile">変更内容</span>
+						<p>
+							<span th:text="${errorName}" class="error"></span>
+							名前:<input type="text" name="name" th:value="${customer.name}" placeholder="名前">
+						</p>
+						<p>
+							<span th:text="${errorUser}" class="error"></span><br>
+							ユーザ名:<input type="text" name="userName" th:value="${customer.userName}" placeholder="ユーザ名">
+						</p>
+						<p>
+							<span th:text="${errorMail}" class="error"></span><br>
+							メールアドレス:<input type="text" name="email" th:value="${customer.email}" placeholder="メールアドレス">
+						</p>
+						<p>
+							<span th:text="${errorPass}" class="error"></span><br>
+							パスワード:<input type="text" name="password" placeholder="パスワード">
+						</p>
+					</div>
+					<button class="plain">変更</button>
+				</form>
+			</div>
+	</main>
+	<hr>
+	<footer th:replace="footer"></footer>
+
+</body>
+
+</html>

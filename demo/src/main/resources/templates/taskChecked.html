@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>達成済みタスク一覧</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<nav th:replace="nav"></nav>
+	<hr>
+	<main>
+		<h3 class="task">達成済みタスク一覧</h3>
+		<table border="1" class="list">
+			<tr>
+				<th>☑</th>
+				<th>タスク内容</th>
+				<th>期限</th>
+				<th>カテゴリー</th>
+				<th>優先度</th>
+				<th>削除</th>
+			</tr>
+			<tr th:each="task:${tasks}">
+				<td>
+					<form th:action="'/tasks/'+${task.id}+'/change'" method="post">
+						<button class="check">
+							<img th:src="@{../images/check.png}" alt="check">
+							<img th:src="@{../images/checked.png}" alt="check">
+						</button>
+					</form>
+				</td>
+				<td>
+					<div class="pop">
+						[[${task.name}]]
+						<span th:text="${task.detail != null} ? ${task.detail} : '詳細無し'" class="pops"></span>
+					</div>
+				</td>
+				<td th:switch="${task.variety}">
+					<th:block th:case="1">無期限</th:block>
+					<th:block th:case="2">
+						<span th:switch="${task.hz}">
+							<span th:case="1">[[${task.deadline}]](毎日)</span>
+							<span th:case="7">[[${task.deadline}]](毎週)</span>
+							<span th:case="30">[[${task.deadline}]](毎月)</span>
+							<span th:case="365">[[${task.deadline}]](毎年)</span>
+						</span>
+					</th:block>
+					<th:block th:case="3">[[${task.deadline}]]</th:block>
+				</td>
+				<td>
+					<th:block th:each="c:${categories}">
+						<span th:text="${task.categoryId == c.id} ? ${c.name}"></span>
+					</th:block>
+				</td>
+				<td th:switch="${task.priority}">
+					<span th:case="1">最高</span>
+					<span th:case="2">中</span>
+					<span th:case="3">最低</span>
+				</td>
+				<td>
+					<form th:action="'/tasks/'+${task.id}+'/delete'" method="post">
+						<button class="delete">
+							<img th:src="@{../images/delete_hover.png}" alt="delete">
+							<img th:src="@{../images/delete.png}" alt="delete">
+						</button>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</main>
+	<hr>
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>

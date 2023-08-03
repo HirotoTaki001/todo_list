@@ -1,0 +1,506 @@
+@charset "UTF-8";
+
+/* 全体 */
+body {
+	background-color: #EFF0F7;
+	min-width: 900px;
+}
+
+/* ヘッダー、ナビゲーションメニュー、フッター */
+header {
+	background-image: url("../images/banner.jpg");
+	opacity: 0.7;
+	background-size: 100%;
+	display: flex;
+	justify-content: space-between;
+	color: #000;
+	text-shadow:
+		1px 1px 1px #fff, -1px -1px 1px #fff,
+		-1px 1px 1px #fff, 1px -1px 1px #fff,
+		1px 0px 1px #fff, -1px -0px 1px #fff,
+		0px 1px 1px #fff, 0px -1px 1px #fff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+nav {
+	text-align: left;
+	background-color: rgb(199, 170, 242);
+	color: #ffffff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+footer {
+	background-image: url("../images/banner.jpg");
+	opacity: 0.7;
+	background-size: 100%;
+	background-position: center bottom;
+	color: rgb(0, 0, 64);
+	text-shadow:
+		1px 1px 1px #fff, -1px -1px 1px #fff,
+		-1px 1px 1px #fff, 1px -1px 1px #fff,
+		1px 0px 1px #fff, -1px -0px 1px #fff,
+		0px 1px 1px #fff, 0px -1px 1px #fff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	font-weight: bold;
+	bottom: 0;
+}
+
+header h1 {
+	color: #ffffff;
+	font-weight: bold;
+	text-shadow:
+		1px 1px 1px #fff, -1px -1px 1px #000,
+		-1px 1px 1px #000, 1px -1px 1px #000,
+		1px 0px 1px #000, -1px -0px 1px #000,
+		0px 1px 1px #000, 0px -1px 1px #fff;
+	margin: 0;
+}
+
+header a,
+nav a {
+	color: rgb(0, 0, 64);
+	text-decoration: none;
+}
+
+header a:hover {
+	text-shadow:
+		1px 1px 1px red, -1px -1px 1px #fff,
+		-1px 1px 1px red, 1px -1px 1px #fff,
+		1px 0px 1px red, -1px -0px 1px #fff,
+		0px 1px 1px red, 0px -1px 1px #fff;
+}
+
+header div {
+	padding-top: 30px;
+	text-align: right;
+}
+
+/* ドロップダウンメニュー */
+ul.menu {
+	width: 935px;
+	margin: 0px;
+	padding: 0 0 0 15px;
+	background-color: rgb(120, 51, 223);
+}
+
+ul.menu li {
+	width: 180px;
+	display: inline-block;
+	list-style-type: none;
+	position: relative;
+}
+
+ul.menu a {
+	background-color: rgb(120, 51, 223);
+	color: white;
+	line-height: 40px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	display: block;
+}
+
+ul.menu a:hover {
+	background-color: rgb(180, 131, 239);
+	color: brown;
+}
+
+ul.menu ul {
+	display: none;
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+}
+
+ul.menu li:hover ul {
+	display: block;
+}
+
+/* 区切り線 */
+hr {
+	border-top: 2px dashed #7d8bae;
+}
+
+/* メイン表示部分 */
+main {
+	background-color: #FFFFFF;
+	min-height: 50px;
+	padding: 20px;
+	text-align: center;
+}
+
+main h3 {
+	text-align: center;
+}
+
+.task {
+	text-align: left;
+	margin-left: 15%;
+}
+
+/* テーブル */
+table {
+	margin: 3px auto;
+	border-collapse: collapse;
+	padding: 10px;
+}
+
+table th {
+	background: #7d8bae;
+	color: #ffffff;
+}
+
+table td {
+	border: 1px solid #7d8bae;
+	background: white;
+	text-align: center;
+}
+
+.list {
+	min-width: 800px;
+}
+
+/* タスク詳細の表示 */
+.pop {
+	position: relative;
+}
+
+.pop:hover .pops {
+	display: inline;
+}
+
+.pops {
+	display: none;
+	position: absolute;
+	padding: 2px;
+	background-color: rgba(0, 0, 0, 0.70);
+	color: white;
+	width: 200px;
+	left: -50%;
+	font-size: 80%;
+}
+
+.pops:after {
+	border-left: 12px solid rgba(0, 0, 0, 0.70);
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	right: -12px;
+	top: 10%;
+	content: "";
+	position: absolute;
+}
+
+/* 登録・更新ボタン */
+.plain {
+	border: 1px solid #7d8bae;
+	margin: 5px;
+	padding: 10px 10px;
+	background-color: royalblue;
+	color: #ffffff;
+	border: none;
+	width: 80px;
+	cursor: pointer;
+}
+
+.plain:hover {
+    background-color: #d5c8e5;
+}
+
+/* ログインボタン */
+.login {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 250px;
+    margin: 0 auto;
+    padding: .9em 2em;
+    border-top: 1px solid #d025ca;
+    border-right: none;
+    border-bottom: 1px solid #d025ca;
+    border-left: none;
+    background-color: #fff;
+    color: #d025ca;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.login:before,  .login:after {
+	position: absolute;
+    width: 1px;
+    height: 140%;
+    background-color: #d025ca;
+    content: '';
+}
+
+.login:before {
+	left: calc(3.1em / 5 - 1px);
+}
+
+.login:after {
+	right: calc(3.1em / 5 - 1px);
+}
+
+.login:hover:before, .login:hover:after {
+	width: 100%;
+    height: 100%;
+    color: #d025ca;
+    content: "ようこそ！";
+    text-align: center;
+    background-color: white;
+    transition: width .3s ease, height .3s .3s ease, content .3s ease;
+}
+
+/* アコーディオンメニュー（タスク登録） */
+.drop {
+	display: none;
+}
+
+.add_btn {
+	position: relative;
+	text-align: left;
+	margin-left: 155px;
+	margin-right: 60%;
+	padding: 15px 15px 15px 15px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.drop_btn {
+	position: absolute;
+	top: 50%;
+	right: 10%;
+	transform: translateY(-50%);
+	background: #0052a4;
+	display: block;
+	width: 24px;
+	height: 24px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
+.drop_btn:before,
+.drop_btn:after {
+	display: block;
+	background-color: #fff;
+	position: absolute;
+	content: "";
+	width: 10px;
+	height: 2px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.drop_btn:before {
+	width: 2px;
+	height: 10px;
+}
+
+#addmenu:checked+.addition>.add_btn>.drop_btn:before {
+	content: none;
+}
+
+.addition:hover {
+	background-color: lightskyblue;
+}
+
+#addmenu[type="checkbox"] {
+	display: none;
+}
+
+.addition[for="addmenu"] {
+	display: block;
+}
+
+.addition[for="addmenu"]::before {
+	transform: rotate(225deg);
+}
+
+#addmenu:checked+.addition+.drop {
+	display: block;
+}
+
+/* タスク登録フォーム */
+.addForm {
+	position: relative;
+    max-width: 700px;
+    margin: 1em auto;
+    padding: 0 2.5em 1.5em 1.5em;
+    box-shadow: 0 2px 3px rgb(0 0 0 / 20%);
+    border: 2px solid palegreen;
+    background-color: rgb(207, 215, 222);
+    color: #333333;
+}
+
+.addForm .tile {
+	position: absolute;
+    top: -30px;
+    left: -50px;
+    transform: translateX(-.3em) rotate(-5deg);
+    padding: .5em 2em;
+    border-right: 2px dotted rgb(0 0 0 / 10%);
+    border-left: 2px dotted rgb(0 0 0 / 10%);
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    background-color: rgb(255 255 255 / 40%);
+    font-weight: 600;
+}
+
+.addForm span {
+	margin: 20px;
+}
+
+/* 周期入力 */
+.hz,
+#hzdays {
+	display: none;
+}
+
+#loop:checked+.hz,
+#loop:checked~#hzdays {
+	display: inline;
+}
+
+/* 期限入力 */
+#days,
+#setday {
+	display: none;
+}
+
+#lims:checked+#days,
+#lims:checked+#setday {
+	display: inline;
+}
+
+/* セレクトボックス */
+select {
+	text-align: center;
+	min-width: 70px;
+    border: 2px solid #36aeb0;
+    border-radius: 25px;
+}
+
+/* チェックボックス */
+.vanity {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .5em 2em;
+    border: none;
+}
+
+.vanity label {
+	display: flex;
+    align-items: center;
+    gap: 0 .5em;
+    position: relative;
+    cursor: pointer;
+}
+
+.vanity label:before {
+	width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #d6dde3;
+    background-color: white;
+    content: '';
+}
+
+.vanity label:has(input[type=checkbox]:checked):after {
+	position: absolute;
+    top: 5px;
+    left: 7px;
+    transform: rotate(45deg);
+    width: 5px;
+    height: 10px;
+    border: solid #bc25d0;
+    border-width: 0 3px 3px 0;
+    content: '';
+}
+
+.vanity input[type=checkbox] {
+	display: none;
+}
+
+/* 編集・削除アイコン */
+.edit,
+.delete,
+.check {
+	background-color: unset;
+	position: relative;
+	width: 32px;
+	height: 32px;
+	margin: 0 auto;
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: none;
+}
+
+.edit img,
+.delete img,
+.check img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 100%;
+	display: block;
+	-webkit-transition: .2s ease-in-out;
+	transition: .2s ease-in-out;
+}
+
+.edit:hover img:nth-of-type(2),
+.delete:hover img:nth-of-type(2),
+.check:hover img:nth-of-type(2) {
+	opacity: 0;
+}
+
+/* ログイン入力・アカウント登録入力部分 */
+.loginForm {
+	background-color: #fff;
+	width: 30%;
+	margin: auto;
+	padding-top: 30px;
+	text-align: center;
+	border: 3px dotted mediumorchid;
+}
+
+/* エラー表示 */
+.error {
+	color: red;
+}
+
+/* アカウント情報 */
+.pass {
+	display: none;
+}
+
+.pass_btn {
+	position: relative;
+	cursor: pointer;
+}
+
+label[for="see"] {
+	display: block;
+}
+
+label[for="see"]::before {
+	transform: rotate(225deg);
+}
+
+#see {
+	display: none;
+}
+
+#see:checked+.pass {
+	display: inline;
+}

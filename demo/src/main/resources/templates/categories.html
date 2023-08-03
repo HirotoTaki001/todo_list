@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>カテゴリー一覧</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<nav th:replace="nav"></nav>
+	<hr>
+	<main>
+		<input type="checkbox" id="addmenu" th:checked="${error != ''}">
+		<label for="addmenu" class="addition">
+			<h3 class="add_btn">カテゴリー登録<span class="drop_btn"></span></h3>
+		</label>
+		<div class="drop">
+			<form action="/categories/add" method="post">
+				<div class="addForm">
+					<span class="error" th:text="${error}"></span><br>
+					<span>カテゴリー名:<input type="text" size="30" name="name"></span>
+				</div>
+				<button class="plain">登録</button>
+			</form>
+		</div>
+		<h3 class="task">カテゴリー一覧</h3>
+		<table border="1" class="list">
+			<tr>
+				<th>カテゴリー名</th>
+				<th>編集</th>
+				<th>削除</th>
+			</tr>
+			<tr th:each="category:${categories}">
+				<td th:text="${category.name}"></td>
+				<td>
+					<form th:action="'/categories/'+${category.id}+'/edit'">
+						<button class="edit">
+							<img th:src="@{../images/edit_hover.png}" alt="edit">
+							<img th:src="@{../images/edit.png}" alt="edit">
+						</button>
+					</form>
+				</td>
+				<td>
+					<form th:action="'/categories/'+${category.id}+'/delete'" method="post">
+						<button class="delete">
+							<img th:src="@{../images/delete_hover.png}" alt="delete">
+							<img th:src="@{../images/delete.png}" alt="delete">
+						</button>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</main>
+	<hr>
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ToDoログイン</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+	<div class="contents">
+		<header>
+			<h1><a href="/">ToDoリスト</a></h1>
+		</header>
+		<hr>
+		<main>
+			<h3>ログイン</h3>
+			<span th:text="${message}" class="error"></span><br>
+			<form action="/login" method="post">
+				<div class="loginForm">
+					<input type="text" name="name" th:value="${email}" size="30" placeholder="メールアドレスもしくはユーザ名"><br><br>
+					<input type="password" name="password" size="30" placeholder="パスワード"><br><br>
+				</div>
+				<br>
+				<button class="login">ログイン</button>
+			</form>
+			<br>
+			<a href="/account" style="display: block; text-align: center;">新規登録</a>
+		</main>
+		<hr>
+	</div>
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>
